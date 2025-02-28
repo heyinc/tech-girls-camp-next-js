@@ -1,5 +1,4 @@
-import Database from "better-sqlite3";
-import path from "path";
+import { getItemById } from "../../../actions/items";
 import Like from "./like";
 
 type Props = {
@@ -8,22 +7,8 @@ type Props = {
   };
 };
 
-interface Item {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  image: string;
-  category: string;
-  totalSales: number;
-}
-
-export default async function ItemDetail({ params }: Props) {
-  const dbPath = path.join(process.cwd(), "items.db");
-  const db = new Database(dbPath, { verbose: console.log });
-  const item = db
-    .prepare("SELECT * FROM items WHERE id = ?")
-    .get(parseInt(params.id)) as Item | undefined;
+export default async function ItemDetail(props: Props) {
+  const item = await getItemById(parseInt(props.params.id));
 
   if (!item) {
     return (
