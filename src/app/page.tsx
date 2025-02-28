@@ -7,14 +7,13 @@ export default async function Home({ searchParams }) {
 
   const currentPage = page ? parseInt(page) : 1;
 
-  // Get only the items needed for the current page
-  const { items: currentItems, totalItems } = await getItemsByPage(
+  // Get items for the current page and check if there's a next page
+  const { items: currentItems, isLastPage } = await getItemsByPage(
     currentPage,
     ITEMS_PER_PAGE
   );
 
   const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage * ITEMS_PER_PAGE >= totalItems;
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -50,7 +49,7 @@ export default async function Home({ searchParams }) {
           <a href={`?page=${currentPage - 1}`}>前へ</a>
         )}
         {isLastPage ? (
-          <span>次へ</span>
+          <span className="text-gray-400">次へ</span>
         ) : (
           <a href={`?page=${currentPage + 1}`}>次へ</a>
         )}
