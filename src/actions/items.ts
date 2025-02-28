@@ -24,12 +24,31 @@ export async function getItemById(id: number): Promise<Item | undefined> {
   }
 }
 
-export async function getAllItems(): Promise<Item[]> {
+export async function getItemsByPage(
+  page: number,
+  itemsPerPage: number
+): Promise<{
+  items: Item[];
+  totalItems: number;
+}> {
   const dbPath = path.join(process.cwd(), "items.db");
   const db = new Database(dbPath, { verbose: console.log });
   
   try {
-    return db.prepare("SELECT * FROM items ORDER BY id ASC").all() as Item[];
+    const offset = (page - 1) * itemsPerPage;
+
+    const items = db
+      .prepare("SELECT * FROM items ORDER BY id ASC LIMIT ? OFFSET ?")
+      .all(itemsPerPage, offset) as Item[];
+
+    const totalItems = db
+      .prepare("SELECT COUNT(*) as count FROM items")
+      .get() as { count: number };
+
+    return {
+      items,
+      totalItems: totalItems.count,
+    };
   } finally {
     db.close();
   }

@@ -1,4 +1,4 @@
-import { getAllItems } from "../actions/items";
+import { getItemsByPage } from "../actions/items";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -7,13 +7,14 @@ export default async function Home({ searchParams }) {
 
   const currentPage = page ? parseInt(page) : 1;
 
-  const allItems = await getAllItems();
+  // Get only the items needed for the current page
+  const { items: currentItems, totalItems } = await getItemsByPage(
+    currentPage,
+    ITEMS_PER_PAGE
+  );
 
-  const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
-  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
-  const currentItems = allItems.slice(indexOfFirstItem, indexOfLastItem);
   const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage * ITEMS_PER_PAGE >= allItems.length;
+  const isLastPage = currentPage * ITEMS_PER_PAGE >= totalItems;
 
   return (
     <main className="container mx-auto px-4 py-8">
