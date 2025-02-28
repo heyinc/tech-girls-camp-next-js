@@ -13,6 +13,8 @@ export default async function Home({ searchParams }) {
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
   const currentItems = allItems.slice(indexOfFirstItem, indexOfLastItem);
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage * ITEMS_PER_PAGE >= allItems.length;
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -38,19 +40,17 @@ export default async function Home({ searchParams }) {
       </div>
 
       <div className="flex justify-center items-center mt-8 gap-4">
-        <Link
-          href={`?page=${currentPage - 1}`}
-          className="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600"
-        >
-          前へ
-        </Link>
+        {isFirstPage ? (
+          <span className="text-gray-400">前へ</span>
+        ) : (
+          <Link href={`?page=${currentPage - 1}`}>前へ</Link>
+        )}
 
-        <Link
-          href={`?page=${currentPage + 1}`}
-          className="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600"
-        >
-          次へ
-        </Link>
+        {isLastPage ? (
+          <span className="text-gray-400">次へ</span>
+        ) : (
+          <Link href={`?page=${currentPage + 1}`}>次へ</Link>
+        )}
       </div>
     </main>
   );
