@@ -26,14 +26,18 @@ export default async function Home({ searchParams }) {
             className="border rounded-lg overflow-hidden shadow-lg"
           >
             <div className="p-4">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-full h-48 object-cover"
-              />
-              <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
-              <p className="text-gray-600 mb-2">{item.description}</p>
-              <p className="text-xl font-bold text-blue-600">{item.price}円</p>
+              <Link href={`/items/${item.id}`}>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-48 object-cover"
+                />
+                <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
+                <p className="text-gray-600 mb-2">{item.description}</p>
+                <p className="text-xl font-bold text-blue-600">
+                  {item.price}円
+                </p>
+              </Link>
             </div>
           </div>
         ))}
