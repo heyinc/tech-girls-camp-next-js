@@ -1,13 +1,29 @@
-import items from "../data/items.json";
+import Database from "better-sqlite3";
+import path from "path";
 
 const ITEMS_PER_PAGE = 5;
+
+interface Item {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
+  category: string;
+  totalSales: number;
+}
 
 export default async function Home({ searchParams }) {
   const { page } = await searchParams;
 
-  const allItems = items;
-
   const currentPage = page ? parseInt(page) : 1;
+
+  const dbPath = path.join(process.cwd(), "items.db");
+  const db = new Database(dbPath, { verbose: console.log });
+
+  const allItems = db
+    .prepare("SELECT * FROM items ORDER BY id ASC")
+    .all() as Item[];
 
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;

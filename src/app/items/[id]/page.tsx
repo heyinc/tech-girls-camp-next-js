@@ -1,4 +1,5 @@
-import items from "../../../data/items.json";
+import Database from "better-sqlite3";
+import path from "path";
 import Like from "./like";
 
 type Props = {
@@ -7,8 +8,22 @@ type Props = {
   };
 };
 
-export default async function ItemDetail(props: Props) {
-  const item = items.find((item) => item.id === parseInt(props.params.id));
+interface Item {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
+  category: string;
+  totalSales: number;
+}
+
+export default async function ItemDetail({ params }: Props) {
+  const dbPath = path.join(process.cwd(), "items.db");
+  const db = new Database(dbPath, { verbose: console.log });
+  const item = db
+    .prepare("SELECT * FROM items WHERE id = ?")
+    .get(parseInt(params.id)) as Item | undefined;
 
   if (!item) {
     return (
