@@ -1,0 +1,10 @@
+# Ignore all markdown files
+*.md
+**/*.md
+
+# Other common files to ignore
+node_modules
+.next
+build
+dist
+public
