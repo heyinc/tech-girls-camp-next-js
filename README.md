@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# STORES Tech Girls Camp Next.js Edition
 
-## Getting Started
+## 目次
 
-First, run the development server:
+1. [商品をひとつ表示しよう](/01.md)
+2. [商品をすべて表示しよう](/02.md)
+3. [商品をページ送りしよう](/03.md)
+4. [商品詳細ページを作ろう](/04.md)
+5. [商品詳細ページのレイアウトを改善しよう](/05.md)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 1. 商品をひとつ表示しよう
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+最初のステップでは、JSONデータから商品情報を読み込み、1つの商品を表示します。このステップでは以下の概念を学びます：
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- JSONデータのインポートと使用方法
+- JSXとHTMLの関係
+- Next.jsのページ構造
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 2. 商品をすべて表示しよう
 
-## Learn More
+次に、すべての商品を表示するように拡張します。このステップでは以下の概念を学びます：
 
-To learn more about Next.js, take a look at the following resources:
+- JavaScriptの配列操作（Array.map）
+- 複数のアイテムをレンダリングする方法
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 3. 商品をページ送りしよう
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+商品が多くなってきたので、ページネーション機能を実装します。このステップでは以下の概念を学びます：
 
-## Deploy on Vercel
+- クエリパラメータの取得と使用
+- 条件付きレンダリング
+- Next.jsのLinkコンポーネント
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 4. 商品詳細ページを作ろう
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+個々の商品の詳細情報を表示するページを作成します。このステップでは以下の概念を学びます：
+
+- 動的ルーティング（[id]を使ったパス）
+- 存在しないリソースの処理（notFound）
+- TypeScriptの型注釈
+
+## 5. 商品詳細ページのレイアウトを改善しよう
+
+最後に、TailwindCSSを使って商品詳細ページのデザインを改善します。このステップでは以下の概念を学びます：
+
+- TailwindCSSの基本的な使い方
+- レスポンシブデザインの実装
+- CSSの基本概念（マージン、パディング、グリッドなど）
