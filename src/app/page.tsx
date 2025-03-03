@@ -1,4 +1,3 @@
-import Link from "next/link";
 import items from "../data/items.json";
 
 const ITEMS_PER_PAGE = 5;
@@ -6,7 +5,7 @@ const ITEMS_PER_PAGE = 5;
 export default async function Home({ searchParams }) {
   const { page } = await searchParams;
 
-  const allItems = items.items;
+  const allItems = items;
 
   const currentPage = page ? parseInt(page) : 1;
 
@@ -26,7 +25,7 @@ export default async function Home({ searchParams }) {
             className="border rounded-lg overflow-hidden shadow-lg"
           >
             <div className="p-4">
-              <Link href={`/items/${item.id}`}>
+              <a href={`/items/${item.id}`}>
                 <img
                   src={item.image}
                   alt={item.name}
@@ -37,7 +36,7 @@ export default async function Home({ searchParams }) {
                 <p className="text-xl font-bold text-blue-600">
                   {item.price}円
                 </p>
-              </Link>
+              </a>
             </div>
           </div>
         ))}
@@ -45,15 +44,14 @@ export default async function Home({ searchParams }) {
 
       <div className="flex justify-center items-center mt-8 gap-4">
         {isFirstPage ? (
-          <span className="text-gray-400">前へ</span>
+          <span>前へ</span>
         ) : (
-          <Link href={`?page=${currentPage - 1}`}>前へ</Link>
+          <a href={`?page=${currentPage - 1}`}>前へ</a>
         )}
-
         {isLastPage ? (
-          <span className="text-gray-400">次へ</span>
+          <span>次へ</span>
         ) : (
-          <Link href={`?page=${currentPage + 1}`}>次へ</Link>
+          <a href={`?page=${currentPage + 1}`}>次へ</a>
         )}
       </div>
     </main>
