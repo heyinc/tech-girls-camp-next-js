@@ -3,6 +3,8 @@
 import { useState } from "react";
 
 const EmojiFlood = () => {
+  const emojiCount = 50;
+  const fontSize = 100;
   const animations = ["fall", "spiral", "zigzag", "bounce", "spin"];
   const randomAnimation =
     animations[Math.floor(Math.random() * animations.length)];
@@ -64,7 +66,7 @@ const EmojiFlood = () => {
             }
           }
         `}</style>
-        {Array.from({ length: 50 }).map((_, i) => (
+        {Array.from({ length: emojiCount }).map((_, i) => (
           <div
             key={i}
             className="absolute animate-emoji"
@@ -74,7 +76,7 @@ const EmojiFlood = () => {
               animation: `${randomAnimation} ${
                 2 + Math.random() * 3
               }s linear forwards`,
-              fontSize: `${Math.random() * 20 + 100}px`,
+              fontSize: `${100 + fontSize * Math.random()}px`,
             }}
           >
             ☺️
