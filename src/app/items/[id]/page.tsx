@@ -22,7 +22,7 @@ export default async function ItemDetail(props: Props) {
     <main className="container mx-auto px-4 py-8">
       <a
         href="/"
-        className="inline-block mb-8 text-blue-600 hover:text-blue-800"
+        className="inline-block m-4 text-blue-600 hover:text-blue-800"
       >
         ← 商品一覧に戻る
       </a>
@@ -35,13 +35,13 @@ export default async function ItemDetail(props: Props) {
           />
         </div>
         <div>
-          <h1 className="text-3xl font-bold mb-4">{item.name}</h1>
-          <p className="text-gray-600 mb-6">{item.description}</p>
-          <div className="bg-gray-100 p-6 rounded-lg">
-            <p className="text-3xl font-bold text-blue-600 mb-4">
+          <h1 className="text-3xl font-bold m-1">{item.name}</h1>
+          <p className="text-gray-600 m-8">{item.description}</p>
+          <div className="bg-blue-100 m-4 p-6 rounded-lg ">
+            <p className="text-3xl font-bold text-blue-600">
               {item.price.toLocaleString()}円
             </p>
-            <p className="text-gray-600">カテゴリー: {item.category}</p>
+            <p className="text-gray-600 m-2">カテゴリー: {item.category}</p>
           </div>
           <Like />
         </div>
