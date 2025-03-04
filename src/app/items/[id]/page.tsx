@@ -1,4 +1,5 @@
 import items from "../../../data/items.json";
+import Like from "./like";
 
 type Props = {
   params: {
@@ -42,6 +43,7 @@ export default async function ItemDetail(props: Props) {
             </p>
             <p className="text-gray-600">カテゴリー: {item.category}</p>
           </div>
+          <Like />
         </div>
       </div>
     </main>
