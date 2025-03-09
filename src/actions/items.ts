@@ -51,3 +51,12 @@ export async function getItemsByPage(
     db.close();
   }
 }
+
+export async function buyItem(id: number) {
+  const dbPath = path.join(process.cwd(), "items.db");
+  const db = new Database(dbPath, { verbose: console.log });
+
+  db.prepare("UPDATE items SET totalSales = totalSales + 1 WHERE id = ?").run(
+    id
+  );
+}

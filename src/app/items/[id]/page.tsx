@@ -1,6 +1,6 @@
 import { getItemById } from "../../../actions/items";
+import Buy from "./buy";
 import Like from "./like";
-
 type Props = {
   params: {
     id: string;
@@ -44,6 +44,7 @@ export default async function ItemDetail(props: Props) {
             <p className="text-gray-600 m-2">カテゴリー: {item.category}</p>
           </div>
           <Like />
+          <Buy id={props.params.id} />
         </div>
       </div>
     </main>
