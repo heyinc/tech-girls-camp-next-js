@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const EmojiFlood = () => {
+const Celebration = () => {
   const emojiCount = 50;
   const fontSize = 100;
   const animations = ["fall", "spiral", "zigzag", "bounce", "spin"];
@@ -101,7 +101,7 @@ const Like = () => {
         </button>
         <span className="text-gray-600">{count}</span>
       </div>
-      {count > 0 && count % 10 === 0 && <EmojiFlood />}
+      {count > 0 && count % 10 === 0 && <Celebration />}
     </>
   );
 };
